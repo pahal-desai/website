@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pahal's Projects</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #d8e2dc, #fef6e4);
+      color: #333;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #2d334a;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .projects {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #4a4e69;
+    }
+
+    .project-description {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Coding Projects</h1>
+    <p>Cool stuff I’ve built with curiosity and code</p>
+  </header>
+
+  <div class="projects">
+
+    <a class="project-card" href="https://github.com/pahal-desai/mag-pro-system" target="_blank">
+      <img src="screenshots/magpro.jpeg" alt="Mag-Pro System Screenshot">
+      <div class="project-title">Mag-Pro System</div>
+      <div class="project-description">
+        A magnetic propulsion train prototype using copper coils and Arduino. Levitate your imagination.
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/pahal-desai/bedtime-story-generator" target="_blank">
+      <img src="screenshots/bedtime.png" alt="Bedtime Story Generator Screenshot">
+      <div class="project-title">Bedtime Story Generator</div>
+      <div class="project-description">
+        Generates calm, sleep-inducing stories using AI. Helps you drift off naturally.
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/pahal-desai/waste-classifier" target="_blank">
+      <img src="screenshots/wasteclassifier.png" alt="Waste Classifier Screenshot">
+      <div class="project-title">Waste Classifier</div>
+      <div class="project-description">
+        Uses PyTorch to identify plastic, metal, or paper waste. A step toward cleaner coding & planet.
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    Pahal — Built with love, logic, and late nights.
+  </footer>
+
+</body>
+</html>
