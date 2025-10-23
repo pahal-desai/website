@@ -5,46 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pahal's Projects</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #d8e2dc, #fef6e4);
       color: #333;
-      padding: 0 20px;
+      padding: 40px 20px;
       min-height: 100vh;
-    }
-
-    /* Navbar */
-    nav {
-      width: 100%;
-      padding: 20px 0;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      font-size: 1.1rem;
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-    }
-    nav a {
-      text-decoration: none;
-      color: #2d334a;
-      font-weight: 600;
-    }
-    nav a:hover {
-      text-decoration: underline;
     }
 
     header {
       text-align: center;
-      margin: 60px 0 40px;
+      margin-bottom: 50px;
     }
 
     header h1 {
@@ -58,36 +31,33 @@
       color: #555;
     }
 
-    /* About Me Section */
-    #about {
+    .about {
       max-width: 800px;
       margin: 0 auto 60px;
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.6);
       padding: 30px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      text-align: center;
     }
 
-    #about h2 {
-      text-align: center;
+    .about h2 {
       font-size: 2rem;
       margin-bottom: 15px;
       color: #4a4e69;
     }
 
-    #about p {
-      font-size: 1.05rem;
+    .about p {
+      font-size: 1.1rem;
       line-height: 1.6;
       color: #444;
-      text-align: center;
     }
 
     .projects {
       display: grid;
       gap: 30px;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      margin-bottom: 60px;
     }
 
     .project-card {
@@ -127,9 +97,30 @@
       line-height: 1.5;
     }
 
+    .social {
+      margin-top: 25px;
+    }
+
+    .social a {
+      margin: 0 12px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      background: #4a4e69;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .social a:hover {
+      background: #6c5ce7;
+      transform: translateY(-4px);
+    }
+
     footer {
       text-align: center;
-      margin: 40px 0 20px;
+      margin-top: 60px;
       font-size: 0.9rem;
       color: #666;
     }
@@ -137,29 +128,27 @@
 </head>
 <body>
 
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-  </nav>
-
   <header>
-    <h1>Hey, I'm Pahal 👋</h1>
-    <p>Student • Developer • Tech Explorer</p>
+    <h1>My Coding Projects</h1>
+    <p>Cool stuff I’ve built with curiosity and code ✨</p>
   </header>
 
-  <!-- About Me -->
-  <section id="about">
+  <!-- ✅ About Section Added -->
+  <div class="about">
     <h2>About Me</h2>
     <p>
-      I’m a student who loves computers, building cool tech, and pushing ideas into reality.
-      Whether it's magnetic propulsion trains,
-      AI-powered tools, or just experimenting with code — I’m always exploring.
+      Hey! I’m <strong>Pahal</strong> — I’m a student who loves computers, building cool tech, and pushing ideas into reality.
+      Whether it's magnetic propulsion trains, AI-powered tools, or just experimenting with code — I’m always exploring.
     </p>
-  </section>
 
-  <!-- Projects Section -->
-  <div id="projects" class="projects">
+    <!-- ✅ Contact / Social -->
+    <div class="social">
+      <a href="mailto:desaipahal64@gmail.com">📧 Email</a>
+      <a href="https://instagram.com/1tz_pahal" target="_blank">📸 Instagram</a>
+    </div>
+  </div>
 
+  <div class="projects">
     <a class="project-card" href="https://github.com/pahal-desai/mag-pro-system" target="_blank">
       <img src="screenshots/magpro.jpeg" alt="Mag-Pro System Screenshot">
       <div class="project-title">Mag-Pro System</div>
@@ -183,9 +172,11 @@
         Uses PyTorch to identify plastic, metal, or paper waste. A step toward cleaner coding & planet.
       </div>
     </a>
-
   </div>
 
+  <footer>
+    Pahal — Built with love, logic, and late nights 💡🌙
+  </footer>
 
 </body>
 </html>
