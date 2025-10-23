@@ -9,19 +9,42 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #d8e2dc, #fef6e4);
       color: #333;
-      padding: 40px 20px;
+      padding: 0 20px;
       min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 1.1rem;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+    }
+    nav a {
+      text-decoration: none;
+      color: #2d334a;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
 
     header {
       text-align: center;
-      margin-bottom: 50px;
+      margin: 60px 0 40px;
     }
 
     header h1 {
@@ -35,10 +58,36 @@
       color: #555;
     }
 
+    /* About Me Section */
+    #about {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    #about h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #4a4e69;
+    }
+
+    #about p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #444;
+      text-align: center;
+    }
+
     .projects {
       display: grid;
       gap: 30px;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      margin-bottom: 60px;
     }
 
     .project-card {
@@ -80,7 +129,7 @@
 
     footer {
       text-align: center;
-      margin-top: 60px;
+      margin: 40px 0 20px;
       font-size: 0.9rem;
       color: #666;
     }
@@ -88,12 +137,28 @@
 </head>
 <body>
 
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+  </nav>
+
   <header>
-    <h1>My Coding Projects</h1>
-    <p>Cool stuff I’ve built with curiosity and code</p>
+    <h1>Hey, I'm Pahal 👋</h1>
+    <p>Student • Developer • Tech Explorer</p>
   </header>
 
-  <div class="projects">
+  <!-- About Me -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a student who loves computers, building cool tech, and pushing ideas into reality.
+      Whether it's magnetic propulsion trains,
+      AI-powered tools, or just experimenting with code — I’m always exploring.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <div id="projects" class="projects">
 
     <a class="project-card" href="https://github.com/pahal-desai/mag-pro-system" target="_blank">
       <img src="screenshots/magpro.jpeg" alt="Mag-Pro System Screenshot">
@@ -121,9 +186,6 @@
 
   </div>
 
-  <footer>
-    Pahal — Built with love, logic, and late nights.
-  </footer>
 
 </body>
 </html>
