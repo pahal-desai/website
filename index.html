@@ -14,7 +14,35 @@
       padding: 40px 20px;
       min-height: 100vh;
     }
+    body.dark-mode {
+      background: linear-gradient(135deg, #1e1e1e, #2e2e2e);
+      color: #f1f1f1;
+    }
+    body.dark-mode .about,
+    body.dark-mode .project-card {
+      background: rgba(40, 40, 40, 0.7);
+      color: #e0e0e0;
+    }
+    body.dark-mode footer { color: #bbb; }
 
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4a4e69;
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      z-index: 999;
+    }
+    .theme-toggle:hover {
+      transform: translateY(-3px);
+      background: #6c5ce7;
+    }
     header {
       text-align: center;
       margin-bottom: 50px;
@@ -128,6 +156,9 @@
 </head>
 <body>
 
+
+<button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
+  
   <header>
     <h1>My Coding Projects</h1>
     <p>Cool stuff I’ve built with curiosity and code ✨</p>
@@ -177,6 +208,28 @@
   <footer>
     Pahal — Built with love, logic, and late nights 💡🌙
   </footer>
+
+  <script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+      toggleBtn.textContent = "☀️ Light Mode";
+      localStorage.setItem('theme', 'dark');
+    } else {
+      toggleBtn.textContent = "🌙 Dark Mode";
+      localStorage.setItem('theme', 'light');
+    }
+  });
+</script>
 
 </body>
 </html>
