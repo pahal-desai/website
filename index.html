@@ -3,27 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pahal's Projects</title>
+  <title>Pahal's Projects 🚀</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cursor-x: 50%;
+      --cursor-y: 50%;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #d8e2dc, #fef6e4);
+      background:
+        radial-gradient(600px at var(--cursor-x) var(--cursor-y), rgba(108, 92, 231, 0.35), transparent 70%),
+        linear-gradient(135deg, #d8e2dc, #fef6e4);
       color: #333;
       padding: 40px 20px;
       min-height: 100vh;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.2s ease, background 0.6s ease;
     }
+
+    body.loaded { opacity: 1; }
+
     body.dark-mode {
-      background: linear-gradient(135deg, #1e1e1e, #2e2e2e);
-      color: #f1f1f1;
+      background:
+        radial-gradient(650px at var(--cursor-x) var(--cursor-y), rgba(114, 238, 255, 0.25), transparent 72%),
+        linear-gradient(135deg, #141414, #2a2a2a);
+      color: #f5f7ff;
     }
+
     body.dark-mode .about,
     body.dark-mode .project-card {
-      background: rgba(40, 40, 40, 0.7);
-      color: #e0e0e0;
+      background: rgba(32, 32, 32, 0.78);
+      color: #f5f7ff;
     }
-    body.dark-mode footer { color: #bbb; }
+
+    body.dark-mode .about h2,
+    body.dark-mode .project-title {
+      color: #d7e3ff;
+    }
+
+    body.dark-mode .about p,
+    body.dark-mode .project-description {
+      color: #c8d4f4;
+    }
+
+    body.dark-mode footer {
+      color: #b8c4e3;
+    }
+
+    body.dark-mode .social a {
+      background: #4450c8;
+    }
+
+    body.dark-mode .social a:hover {
+      background: #7480ff;
+      box-shadow: 0 4px 12px rgba(116, 128, 255, 0.6);
+    }
 
     .theme-toggle {
       position: fixed;
@@ -37,26 +80,114 @@
       border-radius: 30px;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.3s ease;
-      z-index: 999;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(108, 92, 231, 0.25);
     }
+
     .theme-toggle:hover {
       transform: translateY(-3px);
       background: #6c5ce7;
     }
+
+    .ambient-orbs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .ambient-orbs .orb {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.65;
+      animation: float 16s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
+
+    .orb-1 {
+      top: 10%;
+      left: -8%;
+      background: radial-gradient(circle, rgba(255, 183, 197, 0.6) 0%, rgba(255, 214, 165, 0) 70%);
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      top: 55%;
+      right: -12%;
+      background: radial-gradient(circle, rgba(172, 212, 255, 0.6) 0%, rgba(172, 212, 255, 0) 70%);
+      animation-delay: 4s;
+    }
+
+    .orb-3 {
+      bottom: -18%;
+      left: 35%;
+      background: radial-gradient(circle, rgba(237, 219, 255, 0.65) 0%, rgba(237, 219, 255, 0) 70%);
+      animation-delay: 8s;
+    }
+
+    body.dark-mode .orb-1 {
+      background: radial-gradient(circle, rgba(255, 132, 255, 0.45) 0%, rgba(255, 132, 255, 0) 70%);
+    }
+
+    body.dark-mode .orb-2 {
+      background: radial-gradient(circle, rgba(125, 233, 255, 0.45) 0%, rgba(125, 233, 255, 0) 70%);
+    }
+
+    body.dark-mode .orb-3 {
+      background: radial-gradient(circle, rgba(197, 255, 173, 0.45) 0%, rgba(197, 255, 173, 0) 70%);
+    }
+
     header {
       text-align: center;
       margin-bottom: 50px;
+      animation: fadeInDown 1s ease forwards;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -18px;
+      width: 140px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #6c5ce7, #ffafcc, #6c5ce7);
+      transform: translateX(-50%);
+      box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
     }
 
     header h1 {
       font-size: 3rem;
-      color: #2d334a;
-      margin-bottom: 10px;
+      background: linear-gradient(90deg, #4a4e69, #6c5ce7, #4a4e69);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradientShift 5s ease infinite;
+      background-size: 200% 200%;
     }
 
     header p {
       font-size: 1.2rem;
       color: #555;
+      margin: 10px auto 0;
+      display: inline-block;
+      text-align: center;
+      width: 0;
+      max-width: 50ch;
+      overflow: hidden;
+      border-right: 2px solid #6c5ce7;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end) 1s forwards, blink 0.8s step-end infinite alternate;
+    }
+
+    body.dark-mode header p {
+      color: #e5ecff;
+      border-right-color: #9fb1ff;
     }
 
     .about {
@@ -65,9 +196,10 @@
       background: rgba(255, 255, 255, 0.6);
       padding: 30px;
       border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 45px rgba(108, 92, 231, 0.12);
       text-align: center;
+      animation: fadeInUp 1s ease forwards;
     }
 
     .about h2 {
@@ -82,27 +214,98 @@
       color: #444;
     }
 
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto 28px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(108, 92, 231, 0.12);
+      color: #4a4e69;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 30px rgba(108, 92, 231, 0.18);
+    }
+
+    .section-tag::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffafcc, #6c5ce7);
+      box-shadow: 0 0 12px rgba(108, 92, 231, 0.6);
+    }
+
+    body.dark-mode .section-tag {
+      background: rgba(68, 80, 200, 0.22);
+      color: #e6ebff;
+      box-shadow: 0 12px 30px rgba(68, 80, 200, 0.35);
+    }
+
     .projects {
       display: grid;
       gap: 30px;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      animation: fadeIn 2s ease forwards;
     }
 
     .project-card {
       background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
       padding: 20px;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: inherit;
       display: block;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(108, 92, 231, 0.9), rgba(255, 175, 204, 0.85), rgba(108, 92, 231, 0.9));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: -1;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(120% 140% at 50% 0%, rgba(255, 255, 255, 0.2), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .project-card:hover::before,
+    .project-card:hover::after {
+      opacity: 1;
+    }
+
+    body.dark-mode .project-card::before {
+      background: linear-gradient(135deg, rgba(116, 128, 255, 0.55), rgba(197, 255, 173, 0.4), rgba(125, 233, 255, 0.5));
+    }
+
+    body.dark-mode .project-card::after {
+      background: radial-gradient(120% 140% at 50% 0%, rgba(230, 241, 255, 0.12), transparent 60%);
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transform: rotateY(10deg) translateY(-8px);
+      box-shadow: 0 25px 55px rgba(108, 92, 231, 0.25);
     }
 
     .project-card img {
@@ -110,6 +313,11 @@
       height: auto;
       border-radius: 12px;
       margin-bottom: 15px;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
     }
 
     .project-title {
@@ -137,13 +345,15 @@
       color: #fff;
       padding: 10px 18px;
       border-radius: 30px;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
       display: inline-block;
+      box-shadow: 0 12px 25px rgba(108, 92, 231, 0.25);
     }
 
     .social a:hover {
       background: #6c5ce7;
       transform: translateY(-4px);
+      box-shadow: 0 18px 35px rgba(108, 92, 231, 0.35);
     }
 
     footer {
@@ -151,33 +361,63 @@
       margin-top: 60px;
       font-size: 0.9rem;
       color: #666;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4a4e69;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 12px 15px;
+      font-size: 20px;
+      display: none;
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 15px 35px rgba(108, 92, 231, 0.3);
+    }
+
+    #back-to-top:hover {
+      transform: translateY(-5px);
+      background: #6c5ce7;
+      box-shadow: 0 20px 45px rgba(108, 92, 231, 0.4);
+    }
+
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-40px);} to {opacity: 1; transform: translateY(0);} }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes gradientShift { 0%{background-position:0% 50%;} 100%{background-position:100% 50%;} }
+    @keyframes typing { from { width: 0 } to { width: 50ch } }
+    @keyframes blink { 50% { border-color: transparent } }
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(40px, -30px, 0) scale(1.08); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
 
+  <div class="ambient-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
 
-<button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
-  
   <header>
-    <h1>My Coding Projects</h1>
+    <h1>Pahal’s Projects</h1>
     <p>Cool stuff I’ve built with curiosity and code ✨</p>
   </header>
 
-  <!-- ✅ About Section Added -->
-  <div class="about">
-    <h2>About Me</h2>
-    <p>
-      Hey! I’m <strong>Pahal</strong> — I’m a student who loves computers, building cool tech, and pushing ideas into reality.
-      Whether it's magnetic propulsion trains, AI-powered tools, or just experimenting with code — I’m always exploring.
-    </p>
-
-    <!-- ✅ Contact / Social -->
-    <div class="social">
-      <a href="mailto:desaipahal64@gmail.com">📧 Email</a>
-      <a href="https://instagram.com/1tz_pahal" target="_blank">📸 Instagram</a>
-    </div>
-  </div>
+  <div class="section-tag">Featured Builds</div>
 
   <div class="projects">
     <a class="project-card" href="https://github.com/pahal-desai/mag-pro-system" target="_blank">
@@ -203,33 +443,81 @@
         Uses PyTorch to identify plastic, metal, or paper waste. A step toward cleaner coding & planet.
       </div>
     </a>
+
+    <a class="project-card" href="https://github.com/pahal-desai/osint-tool" target="_blank">
+      <img src="screenshots/OSINT.png" alt="OSINT Tool Screenshot">
+      <div class="project-title">OSINT Tool</div>
+      <div class="project-description">
+        A tool for gathering and analyzing open-source intelligence. Know about everyone.🤫
+      </div>
+    </a>
+  </div>
+
+  <div class="about">
+    <h2>About Me</h2>
+    <p>
+      Hey! I’m <strong>Pahal</strong> — a student who loves computers, building cool tech, and pushing ideas into reality.
+      Whether it’s magnetic propulsion trains, AI tools, or random code experiments — I’m all in for learning and creating.
+    </p>
+
+    <div class="social">
+      <a href="mailto:desaipahal64@gmail.com">📧 Email</a>
+      <a href="https://instagram.com/1tz_pahal" target="_blank">📸 Instagram</a>
+    </div>
   </div>
 
   <footer>
     Pahal — Built with love, logic, and late nights 💡🌙
   </footer>
 
+  <button id="back-to-top">⬆️</button>
+
   <script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const body = document.body;
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
 
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    toggleBtn.textContent = "☀️ Light Mode";
-  }
+    const updateCursorGlow = (event) => {
+      const root = document.documentElement;
+      const x = (event.clientX / window.innerWidth) * 100;
+      const y = (event.clientY / window.innerHeight) * 100;
+      root.style.setProperty('--cursor-x', `${x}%`);
+      root.style.setProperty('--cursor-y', `${y}%`);
+    };
 
-  toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
+    window.addEventListener('pointermove', updateCursorGlow);
 
-    if (body.classList.contains('dark-mode')) {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
       toggleBtn.textContent = "☀️ Light Mode";
-      localStorage.setItem('theme', 'dark');
-    } else {
-      toggleBtn.textContent = "🌙 Dark Mode";
-      localStorage.setItem('theme', 'light');
     }
-  });
-</script>
 
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        toggleBtn.textContent = "☀️ Light Mode";
+        localStorage.setItem('theme', 'dark');
+      } else {
+        toggleBtn.textContent = "🌙 Dark Mode";
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
