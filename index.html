@@ -17,7 +17,7 @@
             color: greenyellow;
         }
 
-        .PahalOS {
+        .Pahal {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -39,12 +39,83 @@
 </head>
 
 <body>
-    <div class="PahalOS">
+    <div class="Pahal">
         <h1>Pahal</h1>
     </div>
-    <div style="white-space: nowrap;">
+    <div id="input-row" style="white-space: nowrap;">
         user@pahal:~$<input type="text" autofocus class="command">
     </div>
+
+    <script>
+        const command = document.querySelector(".command");
+        const inputRow = document.getElementById("input-row");
+
+        command.addEventListener("keydown", function (event) {
+            if (event.key !== "Enter") return;
+
+            // Store original input value to print it back to the screen
+            const rawInput = command.value;
+            const input = rawInput.trim().toLowerCase();
+
+            // Print the prompt line and the typed command first
+            print("user@pahal:~$ " + rawInput);
+
+            if (input === "help") {
+                print("Available commands:");
+                print("about");
+                print("projects");
+                print("skills");
+                print("contact");
+                print("clear");
+                print("No need for explainations. you already know what they all do.")
+            }
+
+            else if (input === "about") {
+                print("Hi, I'm Pahal. I like coding, Various OSes (not at all me laptop switching to a random os every single week :), Hardware and building random projects.");
+            }
+
+            else if (input === "projects") {
+                print("FilePeek - a swiss knife for files. its a very big project with many features.");
+                print("StudyFlow -  a uni project for making study easier, it has a bunch of features like pomodoro, resource vault, time and priority management, etc.");
+                //print("ECLIPSE: THE LAST SIGNAL"); to be added after completed
+                print("Neovex (a big one- chromium based web browser!!)");
+                print("this website -_-");
+                print("Various hardware stuff too.");
+                print("Go check out my github too for more info or just text me. lol. https://github.com");
+            }
+
+            else if (input === "skills") {
+                print("JavaScript");
+                print("HTML/CSS");
+                print("React (little bit, i really use a lot of ai when it comes to react lol)");
+                print("C");
+                print("Linux ans stuff");
+                print("python")
+                print("Hardware ans stuff. esp32, arduino, etc.");
+            }
+
+            else if (input === "contact") {
+                print("GitHub: ://github.com");
+            }
+
+            else if (input === "clear") {
+                location.reload();
+                return;
+            }
+
+            else if (input !== "") {
+                print("command not found. type 'help' to get a list of commands. -_-");
+            }
+
+            command.value = "";
+        });
+
+        function print(text) {
+            const line = document.createElement("div");
+            line.textContent = text;
+            document.body.insertBefore(line, inputRow);
+        }
+    </script>
 </body>
 
 </html>
