@@ -35,6 +35,10 @@
             outline: none;
             width: 92%;
         }
+
+        .thethingthatterminalhasbeforeyouenteracommand {
+            color: rgb(255, 29, 29);
+        }
     </style>
 </head>
 
@@ -43,21 +47,38 @@
         <h1>Pahal</h1>
     </div>
     <div id="input-row" style="white-space: nowrap;">
-        user@pahal:~$<input type="text" autofocus class="command">
+        <span class="thethingthatterminalhasbeforeyouenteracommand"
+            style="color: rgb(255, 55, 55);">user@pahal:~$</span><input type="text" autofocus class="command">
     </div>
 
     <script>
         const command = document.querySelector(".command");
         const inputRow = document.getElementById("input-row");
+        function print(text) {
+            const line = document.createElement("pre");
+            if (text.startsWith("user@pahal:~$")) {
+                const span = document.createElement("span");
+                span.className = "thethingthatterminalhasbeforeyouenteracommand";
+                span.style.color = "rgb(255, 55, 55)";
+                span.textContent = "user@pahal:~$";
+                line.appendChild(span);
+                line.appendChild(document.createTextNode(text.replace("user@pahal:~$", "")));
+            } else {
+                line.textContent = text;
+            }
+            line.style.fontFamily = "Pixelbasel";
+            line.style.color = "greenyellow";
+            line.style.fontSize = "20px";
+            line.style.margin = "0";
+            document.body.insertBefore(line, inputRow);
+        }
 
         command.addEventListener("keydown", function (event) {
             if (event.key !== "Enter") return;
 
-            // Store original input value to print it back to the screen
             const rawInput = command.value;
             const input = rawInput.trim().toLowerCase();
 
-            // Print the prompt line and the typed command first
             print("user@pahal:~$ " + rawInput);
 
             if (input === "help") {
@@ -67,6 +88,10 @@
                 print("skills");
                 print("contact");
                 print("clear");
+                print("neofetch");
+                print("pahal is a good boy");
+                print("i love to watch youtube");
+                print("i hate this site");
                 print("No need for explainations. you already know what they all do.")
             }
 
@@ -77,7 +102,7 @@
             else if (input === "projects") {
                 print("FilePeek - a swiss knife for files. its a very big project with many features.");
                 print("StudyFlow -  a uni project for making study easier, it has a bunch of features like pomodoro, resource vault, time and priority management, etc.");
-                //print("ECLIPSE: THE LAST SIGNAL"); to be added after completed
+                //print("ECLIPSE: THE LAST SIGNAL"); planned. adding after completed
                 print("Neovex (a big one- chromium based web browser!!)");
                 print("this website -_-");
                 print("Various hardware stuff too.");
@@ -90,17 +115,44 @@
                 print("React (little bit, i really use a lot of ai when it comes to react lol)");
                 print("C");
                 print("Linux ans stuff");
-                print("python")
+                print("python");
                 print("Hardware ans stuff. esp32, arduino, etc.");
             }
 
             else if (input === "contact") {
-                print("GitHub: ://github.com");
+                print("GitHub: ://github.com/pahal-desai");
             }
 
             else if (input === "clear") {
                 location.reload();
                 return;
+            }
+
+            else if (input === "neofetch") {
+                print("       /\\_        user@pahal");
+                print("      (o.o)        -----------");
+                print("      o_(\")(\")   OS: HTML/CSS/JS");
+                print("                    Host: YOU");
+                print("                    Kernel: its a browser not an actual OS lol");
+                print("                    Uptime: 24/7");
+                print("                    Shell: web-bash");
+                print("                    Terminal: webOS-term");
+                print("                    Font: Pixelbasel");
+                print("At least i tried that ascii thingy :) ");
+            }
+
+            else if (input === "pahal is a good boy") {
+                print("ik, ik");
+            }
+
+            else if (input === "i love to watch youtube") {
+                print("lol same");
+                print("here's my favourite yt video :) -> https://www.youtube.com/watch?v=QDia3e12czc");
+            }
+            else if (input === "i hate this site") {
+                print("why would you do that :(");
+                print("you make me sad :(");
+                print("anyways. you hate the site but not me :)");
             }
 
             else if (input !== "") {
@@ -110,11 +162,6 @@
             command.value = "";
         });
 
-        function print(text) {
-            const line = document.createElement("div");
-            line.textContent = text;
-            document.body.insertBefore(line, inputRow);
-        }
     </script>
 </body>
 
