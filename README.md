@@ -1,7 +1,17 @@
-bruh, who wants a readme file for a portfolio site?
-anyways, its a terminal-ish portfolio site
-it looks like a terminal
-[...read more](https://www.youtube.com/watch?v=QDia3e12czc)
+# #Readme for my portfolio site
+This is my portfolio site.
+it looks like a terminal.
+I've used html, css and js to make it
 
+## It has the following commands:-
+* about
+* projects
+* skills
+* contact
+* clear
+* neofetch
+* pahal is a good boy
+* i love to watch youtube
+* i hate this site
 
-pssst... type `help` in the terminal to get started. :)
+It's deployed on github pages and i got a is-a.dev subdomain from is-a.dev registrar
