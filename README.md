@@ -1,4 +1,4 @@
-# #Readme for my portfolio site
+# Readme for my portfolio site
 This is my portfolio site.
 it looks like a terminal.
 I've used html, css and js to make it
